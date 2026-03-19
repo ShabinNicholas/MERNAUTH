@@ -4,10 +4,12 @@ const express = require('express')
 let routes = require('./routes/userRoutes')
 let taskRoutes = require('./routes/taskRoute')
 let connectDB = require('./db')
+const cors = require('cors')
 
 connectDB()
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use('/', routes)
 app.use('/task', taskRoutes)
