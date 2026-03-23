@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [details, setDetails] = useState({
     userEmailId: "",
     userPassword: "",
   });
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   function handleChange(e) {
     setDetails((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -14,8 +17,17 @@ const Signin = () => {
     try {
       let res = await axios.post("http://localhost:3000/signin", details);
       console.log(res);
+      setMessage("Signing in please wait...");
+      if (res.data.message == "Login successful") {
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        navigate("/view");
+      } else {
+        setMessage("Invalid emailId or Password");
+      }
     } catch (error) {
       console.log(error);
+      setMessage("Invalid Credentials");
     }
   }
   return (
@@ -38,6 +50,10 @@ const Signin = () => {
         <br /> <br />
         <button type="submit">Signin</button>
       </form>
+      <p>
+        New user? <Link to="/signup">Signup</Link>
+      </p>
+      <p>{message}</p>
     </div>
   );
 };
