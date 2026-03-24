@@ -99,8 +99,33 @@ const refreshToken = async (req, res) => {
 
 }
 
+const logout = async (req, res) => {
+    try {
+        const { token } = req.body
+
+        const user = await userSchema.findOne({ refreshToken: token })
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found"
+            })
+        }
+
+        user.refreshToken = null;
+        await user.save()
+        res.json({
+            message: "Logged out successfully"
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Logout error",
+            error: error.message
+        })
+    }
+}
+
 module.exports = {
     signIn,
     signUp,
-    refreshToken
+    refreshToken,
+    logout
 }

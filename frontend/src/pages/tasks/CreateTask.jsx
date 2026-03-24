@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { handleLogout } from "../../components/logout";
 
 const CreateTask = () => {
   const token = localStorage.getItem("accessToken");
   const [details, setDetails] = useState({
     taskName: "",
-    taskPriority: "",
+    taskPriority: "High",
     taskDeadline: "",
   });
 
@@ -25,7 +26,9 @@ const CreateTask = () => {
           },
         },
       );
-      console.log(res);
+      if (res.data.message == "Task Saved") {
+        alert("Task saved successfully");
+      }
     } catch (error) {
       console.log("Error in adding task", error);
     }
@@ -47,10 +50,12 @@ const CreateTask = () => {
           <option value="Low">Low</option>
         </select>
         <br /> <br />
-        <input type="date" name="taskDeadline" />
+        <input type="date" name="taskDeadline" onChange={handleChange} />
         <br /> <br />
         <button type="submit">Add</button>
       </form>
+
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
