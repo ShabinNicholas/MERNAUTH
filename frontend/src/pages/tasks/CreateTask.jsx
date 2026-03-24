@@ -1,9 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { useState } from "react";
 import { handleLogout } from "../../components/logout";
 
 const CreateTask = () => {
-  const token = localStorage.getItem("accessToken");
+  // const token = localStorage.getItem("accessToken");
   const [details, setDetails] = useState({
     taskName: "",
     taskPriority: "High",
@@ -17,15 +18,7 @@ const CreateTask = () => {
   async function addTask(e) {
     try {
       e.preventDefault();
-      let res = await axios.post(
-        "http://localhost:3000/task/createTask",
-        details,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
+      let res = await axiosInstance.post("/task/createTask", details);
       if (res.data.message == "Task Saved") {
         alert("Task saved successfully");
       }
