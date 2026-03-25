@@ -9,9 +9,11 @@ const Signin = () => {
   });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
   function handleChange(e) {
     setDetails((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -30,30 +32,48 @@ const Signin = () => {
       setMessage("Invalid Credentials");
     }
   }
+
   return (
-    <div>
-      <h1>Signin</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          name="userEmailId"
-          onChange={handleChange}
-        />
-        <br /> <br />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          name="userPassword"
-          onChange={handleChange}
-        />
-        <br /> <br />
-        <button type="submit">Signin</button>
-      </form>
-      <p>
-        New user? <Link to="/signup">Signup</Link>
-      </p>
-      <p>{message}</p>
+    <div className="container mt-5">
+      <div className="card shadow p-4 mx-auto" style={{ maxWidth: "400px" }}>
+        <h1 className="text-center mb-4">Signin</h1>
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              name="userEmailId"
+              onChange={handleChange}
+              className="form-control"
+            />
+          </div>
+
+          <div className="mb-3">
+            <input
+              type="password"
+              placeholder="Enter your password"
+              name="userPassword"
+              onChange={handleChange}
+              className="form-control"
+            />
+          </div>
+
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary">
+              Signin
+            </button>
+          </div>
+        </form>
+
+        <p className="text-center mt-3">
+          New user? <Link to="/signup">Signup</Link>
+        </p>
+
+        {message && (
+          <p className="text-center text-danger mt-2">{message}</p>
+        )}
+      </div>
     </div>
   );
 };

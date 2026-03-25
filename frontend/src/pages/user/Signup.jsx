@@ -32,53 +32,62 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <div className="container mt-5">
+      <div className="card shadow p-4 mx-auto" style={{ maxWidth: "400px" }}>
+        <h2 className="text-center mb-4">Signup</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="userName"
-          placeholder="Enter Name"
-          value={formData.userName}
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="userName"
+              placeholder="Enter Name"
+              value={formData.userName}
+              onChange={handleChange}
+              required
+              className="form-control"
+            />
+          </div>
 
-        <br />
-        <br />
+          <div className="mb-3">
+            <input
+              type="email"
+              name="userEmailId"
+              placeholder="Enter Email"
+              value={formData.userEmailId}
+              onChange={handleChange}
+              required
+              className="form-control"
+            />
+          </div>
 
-        <input
-          type="email"
-          name="userEmailId"
-          placeholder="Enter Email"
-          value={formData.userEmailId}
-          onChange={handleChange}
-          required
-        />
+          <div className="mb-3">
+            <input
+              type="password"
+              name="userPassword"
+              placeholder="Enter Password"
+              value={formData.userPassword}
+              onChange={handleChange}
+              required
+              className="form-control"
+            />
+          </div>
 
-        <br />
-        <br />
+          <div className="d-grid">
+            <button type="submit" className="btn btn-success">
+              Signup
+            </button>
+          </div>
+        </form>
 
-        <input
-          type="password"
-          name="userPassword"
-          placeholder="Enter Password"
-          value={formData.userPassword}
-          onChange={handleChange}
-          required
-        />
+        <p className="text-center mt-3">
+          Already have an account? <Link to="/signin">Signin</Link>
+        </p>
 
-        <br />
-        <br />
-
-        <button type="submit">Signup</button>
-      </form>
-      <p>
-        Already have an account? <Link to="/signin">Signin</Link>
-      </p>
-
-      <p>{message}</p>
+        {message && (
+          <p className="text-center text-info mt-2">{message}</p>
+        )}
+      </div>
     </div>
   );
 }
