@@ -36,14 +36,14 @@ axiosInstance.interceptors.response.use(
                     return
                 }
 
-                // const res = await axios.post(
-                //     "http://localhost:3000/refreshToken",
-                //     { token: refreshToken }
-                // );
+                const res = await axios.post(
+                    "http://localhost:3000/refreshToken",
+                    { token: refreshToken }
+                );
 
-                const res = await axiosInstance.post("/refreshToken", {
-                    token: refreshToken,
-                })
+                // const res = await axiosInstance.post("/refreshToken", {
+                //     token: refreshToken,
+                // })
 
                 const newAccessToken = res.data.accessToken;
                 localStorage.setItem("accessToken", newAccessToken)
