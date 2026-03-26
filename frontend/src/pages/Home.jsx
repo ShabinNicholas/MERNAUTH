@@ -26,7 +26,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Optional footer */}
       <p className="position-absolute bottom-0 mb-3 text-muted">
         © 2026 Task Manager
       </p>

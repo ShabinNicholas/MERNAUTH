@@ -1,4 +1,3 @@
-// import axios from "axios";
 import axiosInstance from "../../utils/axiosInstance";
 import { useState } from "react";
 import { handleLogout } from "../../components/logout";

@@ -1,4 +1,3 @@
-// TaskSchema.js
 const mongoose = require('mongoose')
 
 let TaskSchema = mongoose.Schema({

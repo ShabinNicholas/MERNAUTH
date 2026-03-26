@@ -1,4 +1,3 @@
-// route.js
 let express = require('express')
 let routes = express.Router()
 let controller = require('../controller/taskController')

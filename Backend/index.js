@@ -1,4 +1,3 @@
-// index.js
 require('dotenv').config()
 const express = require('express')
 let routes = require('./routes/userRoutes')
