@@ -40,10 +40,10 @@ const getTasks = async (req, res) => {
 const getTask = async (req, res) => {
 
     try {
-        let indData = await TaskSchema.findById(req.params.id)
+        let task = await TaskSchema.findById(req.params.id)
         res.json({
             message: "Task fetched",
-            data: indData
+            data: task
         })
     } catch (error) {
         res.json({
@@ -55,7 +55,7 @@ const getTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
     try {
-        let resData = await TaskSchema.findByIdAndDelete(req.params.id)
+        let deletedTask = await TaskSchema.findByIdAndDelete(req.params.id)
         res.json({
             message: "Task deleted successfully"
         })
