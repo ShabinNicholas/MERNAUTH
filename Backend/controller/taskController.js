@@ -8,7 +8,8 @@ const createTask = async (req, res) => {
         let newTask = new TaskSchema({
             taskName,
             taskPriority,
-            taskDeadline
+            taskDeadline,
+            userId: req.user.id
         })
         await newTask.save()
         res.json({
@@ -24,10 +25,10 @@ const createTask = async (req, res) => {
 
 const getTasks = async (req, res) => {
     try {
-        let data = await TaskSchema.find()
+        let data = await TaskSchema.find({ userId: req.user.id })
         res.json({
             taskList: data,
-            message: "TaskFetched"
+            message: "Task Fetched"
         })
     } catch (error) {
         res.json({
@@ -55,7 +56,10 @@ const getTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
     try {
-        let deletedTask = await TaskSchema.findByIdAndDelete(req.params.id)
+        let deletedTask = await TaskSchema.findByIdAndDelete({
+            _id: req.params.id,
+            userId: req.params.id
+        })
         res.json({
             message: "Task deleted successfully"
         })

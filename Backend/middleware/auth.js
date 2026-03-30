@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken')
 
-const verifyToken = (req, res, next)=>{
+const verifyToken = (req, res, next) => {
     const header = req.headers.authorization;
 
-    if(!header){
+    if (!header) {
         return res.status(401).json({
-            message:"Token required",
+            message: "Token required",
         })
     }
 
@@ -17,8 +17,8 @@ const verifyToken = (req, res, next)=>{
         next()
     } catch (error) {
         res.status(403).json({
-            message:"Invalid or expired token"
-        })        
+            message: "Invalid or expired token"
+        })
     }
 }
 
