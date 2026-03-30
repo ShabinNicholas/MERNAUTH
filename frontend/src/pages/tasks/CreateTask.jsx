@@ -35,62 +35,62 @@ const CreateTask = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="container mt-5">
-      <div className="card shadow p-4">
-        <h1 className="text-center mb-4">Create Task</h1>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="card shadow p-4">
+          <h1 className="text-center mb-4">Create Task</h1>
 
-        <form onSubmit={addTask}>
-          <div className="mb-3">
-            <input
-              type="text"
-              placeholder="Task name"
-              onChange={handleChange}
-              name="taskName"
-              value={details.taskName}
-              className="form-control"
-            />
-          </div>
+          <form onSubmit={addTask}>
+            <div className="mb-3">
+              <input
+                type="text"
+                placeholder="Task name"
+                onChange={handleChange}
+                name="taskName"
+                value={details.taskName}
+                className="form-control"
+              />
+            </div>
 
-          <div className="mb-3">
-            <select
-              onChange={handleChange}
-              name="taskPriority"
-              value={details.taskPriority}
-              className="form-select"
-            >
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
-          </div>
+            <div className="mb-3">
+              <select
+                onChange={handleChange}
+                name="taskPriority"
+                value={details.taskPriority}
+                className="form-select"
+              >
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
 
-          <div className="mb-3">
-            <input
-              type="date"
-              name="taskDeadline"
-              onChange={handleChange}
-              value={details.taskDeadline}
-              className="form-control"
-            />
-          </div>
+            <div className="mb-3">
+              <input
+                type="date"
+                name="taskDeadline"
+                onChange={handleChange}
+                value={details.taskDeadline}
+                className="form-control"
+              />
+            </div>
+
+            <div className="d-grid">
+              <button type="submit" className="btn btn-primary">
+                Add Task
+              </button>
+            </div>
+          </form>
+
+          <hr />
 
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
-              Add Task
+            <button onClick={handleLogout} className="btn btn-danger">
+              Logout
             </button>
           </div>
-        </form>
-
-        <hr />
-
-        <div className="d-grid">
-          <button onClick={handleLogout} className="btn btn-danger">
-            Logout
-          </button>
         </div>
       </div>
-    </div>
     </>
   );
 };
