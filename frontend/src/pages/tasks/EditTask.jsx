@@ -3,6 +3,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { handleLogout } from "../../components/logout";
 import Navbar from "../../components/Navbar";
+import toast from "react-hot-toast";
 
 const EditTask = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const EditTask = () => {
       let res = await axiosInstance.put(`/task/editTask/${id}`, details);
 
       if (res.data.message === "Task updated successfully") {
-        alert("Task updated successfully");
+        toast.success("Task updated successfully");
         navigate("/view");
       }
     } catch (error) {

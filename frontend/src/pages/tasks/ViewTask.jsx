@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ViewTask = () => {
-  return (
-    <div>ViewTask</div>
-  )
-}
+  return <div>ViewTask</div>;
+};
 
-export default ViewTask
+export default ViewTask;

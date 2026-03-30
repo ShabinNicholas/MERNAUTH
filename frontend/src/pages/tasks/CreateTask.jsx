@@ -2,6 +2,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { useState } from "react";
 import { handleLogout } from "../../components/logout";
 import Navbar from "../../components/Navbar";
+import toast from "react-hot-toast";
 
 const CreateTask = () => {
   const [details, setDetails] = useState({
@@ -21,7 +22,7 @@ const CreateTask = () => {
       console.log(res);
 
       if (res.data.message == "Task saved") {
-        alert("Task saved successfully");
+        toast.success("Task saved successfully");
         setDetails({
           taskName: "",
           taskPriority: "High",
