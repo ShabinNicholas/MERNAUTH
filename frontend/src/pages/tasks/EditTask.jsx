@@ -42,7 +42,7 @@ const EditTask = () => {
     try {
       let res = await axiosInstance.put(`/task/editTask/${id}`, details);
 
-      if (res.data.message === "Task updated") {
+      if (res.data.message === "Task updated successfully") {
         alert("Task updated successfully");
         navigate("/view");
       }
@@ -57,7 +57,7 @@ const EditTask = () => {
 
   return (
     <div className="container mt-5">
-      <Navbar/>
+      <Navbar />
 
       {/* 🔥 Card */}
       <div className="card shadow p-4 mx-auto" style={{ maxWidth: "500px" }}>

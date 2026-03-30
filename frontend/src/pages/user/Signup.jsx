@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -8,6 +8,8 @@ function Signup() {
     userEmailId: "",
     userPassword: "",
   });
+
+  const navigate = useNavigate();
 
   const [message, setMessage] = useState("");
 
@@ -26,6 +28,9 @@ function Signup() {
     try {
       const res = await axios.post("http://localhost:3000/signup", formData);
       setMessage(res.data.message);
+      if (res.data.message == "User registered successfully") {
+        navigate("/signin");
+      }
     } catch (err) {
       setMessage(err.response?.data?.message || "Signup failed");
     }
@@ -84,9 +89,7 @@ function Signup() {
           Already have an account? <Link to="/signin">Signin</Link>
         </p>
 
-        {message && (
-          <p className="text-center text-info mt-2">{message}</p>
-        )}
+        {message && <p className="text-center text-info mt-2">{message}</p>}
       </div>
     </div>
   );
