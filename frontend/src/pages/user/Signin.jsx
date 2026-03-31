@@ -69,10 +69,7 @@ const Signin = () => {
         <p className="text-center mt-3">
           New user? <Link to="/signup">Signup</Link>
         </p>
-
-        {message && (
-          <p className="text-center text-danger mt-2">{message}</p>
-        )}
+        {message && <p className="text-center text-danger mt-2">{message}</p>}
       </div>
     </div>
   );
